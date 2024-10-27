@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QFile>
+#include <QTcpSocket>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TcpClient; }
@@ -17,9 +18,15 @@ public:
     ~TcpClient();
     void loadConfig();
 
+public slots:
+    void showConnect();
+
 private:
     Ui::TcpClient *ui;
     QString m_strIP;
     quint16 m_usPort;
+
+    //连接服务器，和服务器数据交互
+    QTcpSocket m_tcpSocket;
 };
 #endif // TCPCLIENT_H
